@@ -11,13 +11,10 @@ var funcMethods = {};
 
 funcMethods.insert = function(value) {
 
-    
 	var tree = BinarySearchTree(value);
-
-
 	var currentNode = this;
+
 	while(currentNode) {
-		console.log(currentNode, value)
 		if(value > currentNode.value) {
 			if ( currentNode.right === null){
 				currentNode.right = tree;
@@ -25,31 +22,14 @@ funcMethods.insert = function(value) {
 			}			
 			currentNode = currentNode.right;
 		}
-		else {
+		else if ( value < currentNode) {
 			if (currentNode.left === null) {
 				currentNode.left = tree;
 				break;
 			}
 			currentNode = currentNode.left;
 		}
-		// if (currentNode === null) {
-		// 	currentNode = tree;
-		// 	break;
-		// }
-		console.log(currentNode)
 	}
-
-
-	/*
-	if ( compare( tree.value, this.value ) )
-
-    var compare = function(a,b) {
-    	if ( a.value < b.value ) { a.right = b; }
-    	else if ( a.value > b.value ) { a.left = b;}
-    	else { console.log('a === b'); }
-    };
-	*/
-
 };
 
 funcMethods.depthFirstLog = function(cb){
@@ -88,6 +68,9 @@ funcMethods.contains = function(value) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ .insert = O(log(n))
+ .depthFirstLog = O(n)
+ .contains = O(log(n))
  */
 
 
